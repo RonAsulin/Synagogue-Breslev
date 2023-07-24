@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+:root {
+    --font-weight-bold: 700;
+}
+
+*,
+*:before,
+*:after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+nav {
+    min-width: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin: auto;
+}
+
+a {
+    position: relative;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    font-weight: var(--font-weight-bold);
+    color: #1a995a;
+    font-size: 20px;
+    letter-spacing: 0.5px;
+    padding: 0 10px;
+}
+
+a::before {
+    content: none;
+    /* בטל את התוכן של הקו העליון */
+}
+
+a:after {
+    content: "";
+    position: absolute;
+    background-color: #ff3c78;
+    height: 3px;
+    width: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -10px;
+    transition: 0.3s;
+    font-weight: bolder;
+}
+
+a:hover {
+    color: #ffffff;
+    font-weight: bolder;
+    font-size: large;
+}
+
+a:hover::before {
+    transform: scaleX(1);
+}
+
+a:hover:after {
+    width: 100%;
+    background-color: #ff3c78;
+    font-weight: var(--font-weight-bold);
+    font-weight: bolder;
+}
+.admin-button-active,
+.admin-button-inactive {
+    background-color: transparent;
+    border: none;
+}
+
+.admin-button-active:hover {
+    background-color: transparent;
+    border: none;
+}
+
+.admin-button-inactive:hover {
+    background-color: transparent;
+    border: none;
+}
+.social-icon-wrapper {
+    position: relative;
+}
+

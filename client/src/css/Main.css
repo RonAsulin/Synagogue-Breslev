@@ -1,0 +1,220 @@
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+.background-image {
+    position: absolute;
+    
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+.background-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+    /* נותן לתמונה להתפשט לכל העמוד */
+}
+.page-title {
+    font-size: 5rem;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+    color: #fff;
+    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.7), 0 0 3px rgba(0, 0, 0, 0.9), 0 0 3px rgba(0, 0, 0, 0.9),
+        0 0 3px rgba(0, 0, 0, 0.9), 0 0 3px rgba(0, 0, 0, 0.9);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 10px;
+    margin: 0;
+}
+.bold {
+    font-weight: bold;
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+
+.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    /* ניתן לשנות את המרווח לפי הצורך */
+}
+
+.logo-image {
+    max-width:1000px;
+    /* ניתן לשנות את הגודל לפי הצורך */
+}
+.page-button {
+    padding: 15px 25px;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.5;
+    color: #555555;
+    background-color: #ffffff;
+    border: 2px solid transparent;
+    border-radius: 9999px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.page-button:hover {
+    background-color: transparent;
+    color: #ffffff;
+    border-color: #ffffff;
+}
+
+.button-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.button-group .page-button:not(:last-child) {
+    margin-right: 10px;
+}
+.text-image {
+    display: block;
+    margin: 20px auto;
+    width: 1000px;
+    height: auto;
+}
+
+/* Add the following CSS for marquee effect */
+/* .marquee-container {
+    overflow: hidden;
+    width: 50%;
+    white-space: nowrap;
+     animation: marqueeAnimation 15s linear infinite; 
+    padding: 0 20px;
+    justify-content: center;
+        align-items: center;
+        position: relative;
+        display: flex;
+           
+            justify-content: flex-start;
+} */
+
+
+@keyframes marqueeAnimation {
+    0% {
+        transform: translateX(130%);
+    }
+
+    100% {
+        transform: translateX(-29%);
+    }
+}
+.card {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 0;
+    background-color: rgba(255, 255, 255, 0.02);
+    text-align: center;
+}
+
+.card .message {
+    flex: 1;
+    margin: 5px;
+}
+.custom-list-group {
+    font-size: 18px;
+}
+
+.custom-list-item {
+    padding: 15px;
+}
+.custom-card {
+    border: none;
+}
+.card{
+    border:none;
+}
+/* PAGE MASSAGE */
+.notice-board {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.notice-board>.card {
+    width: 400px;
+    margin-bottom: 20px;
+}
+
+
+.add-message {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.button-row {
+    display: flex;
+    justify-content: space-between;
+}
+ .tracking-in-expand-fwd-top {
+     -webkit-animation: tracking-in-expand-fwd-top 0.8s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+     animation: tracking-in-expand-fwd-top 0.8s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+ }
+
+ @-webkit-keyframes tracking-in-expand-fwd-top {
+     0% {
+         letter-spacing: -0.5em;
+         -webkit-transform: translateZ(-700px) translateY(-500px);
+         transform: translateZ(-700px) translateY(-500px);
+         opacity: 0;
+     }
+
+     40% {
+         opacity: 0.6;
+     }
+
+     100% {
+         -webkit-transform: translateZ(0) translateY(0);
+         transform: translateZ(0) translateY(0);
+         opacity: 1;
+     }
+ }
+
+ @keyframes tracking-in-expand-fwd-top {
+     0% {
+         letter-spacing: -0.5em;
+         -webkit-transform: translateZ(-700px) translateY(-500px);
+         transform: translateZ(-700px) translateY(-500px);
+         opacity: 0;
+     }
+
+     40% {
+         opacity: 0.6;
+     }
+
+     100% {
+         -webkit-transform: translateZ(0) translateY(0);
+         transform: translateZ(0) translateY(0);
+         opacity: 1;
+     }
+ }
