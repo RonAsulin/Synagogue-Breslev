@@ -1,13 +1,26 @@
 import React, { useEffect, useState } from 'react';
 import { Card, Container } from 'react-bootstrap';
 import FirebaseClient from '../api/FirebaseClient';
-import forest from '../pics/forest.jpg';
+import forest from '../pics/forest.png';
 import { toast } from 'react-toastify';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../css/message.css';
 
 const Message = () => {
   const [messages, setMessages] = useState([]);
+  const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+    fetchMessages();
+    handleWindowSizeChange(); // קריאה ראשונית לפונקציה לקביעת ערך ה-isMobile
+    window.addEventListener('resize', handleWindowSizeChange); // הוספת אירוע על שינוי גודל המסך
+    return () => {
+      window.removeEventListener('resize', handleWindowSizeChange); // הסרת האירוע כאשר הקומפוננטה מורדת
+    };
+  }, []);
+  const handleWindowSizeChange = () => {
+    setIsMobile(window.innerWidth <= 768);
+  };
 
   useEffect(() => {
     fetchMessages();
@@ -32,27 +45,41 @@ const Message = () => {
     }
   };
 
-  const handleToggleMessage = (id) => {
+  const handleToggleMessage = (id, e) => {
+    // Check if the click occurred on the "X" icon (close-icon)
+    if (!e.target.classList.contains('close-icon')) {
+      setMessages((prevMessages) =>
+        prevMessages.map((message) =>
+          message.id === id ? { ...message, isOpen: !message.isOpen } : message
+        )
+      );
+    }
+  };
+
+  const handleOpenMessage = (id) => {
     setMessages((prevMessages) =>
       prevMessages.map((message) =>
         message.id === id ? { ...message, isOpen: !message.isOpen } : message
       )
     );
   };
+    const isMobileDevice = window.innerWidth <= 768; // Check if the device is mobile
 
-  return (
-    <div className="main-container">
-      <img src={forest} alt="forest" className="background-image" />
-      <div className="tracking-in-expand-fwd-top">
-        <h1 className="page-title">הודעות בית כנסת</h1>
+
+ return (
+     <div className="main-container">
+      <div className="background-container">
+        {/* Use a regular <img> tag for the background image */}
+        <img src={forest} alt="forest" className="background-image" />
       </div>
+      <h1 className="page-title logo tracking-in-expand-fwd-top">הודעות בית-מדרשינו</h1>
       <Container className="notice-board">
         {messages.map((message, index) => (
           <div key={message.id}>
             {index !== 0 && <hr className="divider" />}
             <Card
               className={`message-card ${message.isOpen ? 'open' : ''}`}
-              onClick={() => handleToggleMessage(message.id)}
+              onClick={() => handleOpenMessage(message.id)}
             >
               <Card.Header className="title">
                 <span>{message.title}</span>
@@ -68,4 +95,5 @@ const Message = () => {
     </div>
   );
 };
+
 export default Message;

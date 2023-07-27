@@ -7,7 +7,7 @@ import { Button, Card, CardContent, CardHeader, Collapse, List, ListItem, ListIt
 import '../css/btnStile.css';
 import { HiTrash } from 'react-icons/hi';
 import '../css/Main.css';
-import forest from "../pics/forest.jpg";
+import forest from "../pics/forest.png";
 import MessagesList from '../components/MessagesList.js'
 
 function Admin(props) {
@@ -28,8 +28,31 @@ function Admin(props) {
   const [isMessageOpen, setIsMessageOpen] = useState(false);
   const [selectedMessage, setSelectedMessage] = useState(null);
   const [newTitle,setNewTitle] = useState('');
-  
+  const [pdfListDL, setPdfListDL] = useState([]);
+  const [pdfUploadDL, setPdfUploadDL] = useState(null);
+  const [pdfURLDL, setPdfURLDL] = useState('');
+   const [showOptionsDL, setShowOptionsDL] = useState(false);
+   
+ const handleWindowResize = () => {
+    // Get the window's inner width
+    const windowWidth = window.innerWidth;
+    
 
+    if (windowWidth < 768) {
+
+    } else {
+
+    }
+  };
+
+  // Add event listener for window resize
+  useEffect(() => {
+    window.addEventListener("resize", handleWindowResize);
+    // Remove event listener on component unmount
+    return () => {
+      window.removeEventListener("resize", handleWindowResize);
+    };
+  }, []);
   // UploadPdf functions
 
   const handleToggleTable = () => {
@@ -290,7 +313,92 @@ const handleInputChangeMsg = (event) => {
   setSelectedMessage(message); // עדכון ההודעה הנבחרת במשתנה selectedMessage
   // נוסיף כאן את הלוגיקה הנדרשת לעיבוד ההודעה
 };
+//DEADLINES
 
+ const handleToggleOptionsDL = () => {
+    setShowOptionsDL(!showOptionsDL);
+  };
+const uploadPdfDeadLines = async () => {
+    setIsLoading(true); // הפעלת הטעינה
+
+    const cl = FirebaseClient.getInstance();
+    const arrHolder = [];
+    if (pdfListDL.length === 5) {
+      const deleted = await cl.DeleteDeadLines(pdfListDL[4]);
+      if (deleted instanceof Error) {
+        alert(deleted.message);
+        return;
+      }
+
+      for (let i = 0; i < pdfListDL.length; i++) {
+        arrHolder.push(pdfListDL[i])
+      }
+      for (let i = arrHolder.length - 1; i > 0; i--) {
+        arrHolder[i] = arrHolder[i - 1];
+      }
+    }
+
+    const res = await cl.DeadLinesUploadFile(pdfUploadDL);
+
+    if (res instanceof Error) {
+      alert(res.message);
+    } else {
+      const dateUpload = Date.now();
+      const dataEntry = { file: res, name: pdfUploadDL.name, date: dateUpload };
+      const resEntry = await cl.AppendDeadLinesEntry(dataEntry);
+
+      if (resEntry instanceof Error) {
+        alert(resEntry.message);
+      } else {
+        //do something
+        alert("good");
+        arrHolder[0] = resEntry;
+        if (arrHolder.length === 1)
+          setPdfListDL(arrHolder);
+        else
+          setPdfListDL([resEntry, ...pdfListDL])
+      }
+    }
+
+    setIsLoading(false); // כיבוי הטעינה לאחר הסיום
+  };
+  const handlePdfSelectionDL = async (pdf) => {
+    setSelectedPdf(pdf);
+    setShowOptionsDL(false);
+    const storage = FirebaseClient.GetStorage();
+    const pdfRef = ref(storage,pdf.file.download_url);
+    const url = await getDownloadURL(pdfRef);
+    setPdfURLDL(url);
+  };
+  const deletePdfDL = async (pdf) => {
+    const cl = FirebaseClient.getInstance();
+    const res = await cl.DeleteDeadLines(pdf);
+    if (res instanceof Error)
+      alert(res.message);
+    else
+      setPdfListDL(pdfListDL.filter(deadlines => deadlines._id !== pdf._id));
+  }
+   useEffect(() => {
+    const fetchPDF = async () => {
+      try {
+        const cl = FirebaseClient.getInstance();
+        const res = await cl.GetDeadLines();
+        if (res instanceof Error) {
+          alert(res.message);
+        } else {
+          setPdfListDL(res);
+          const storage = FirebaseClient.GetStorage();
+          const pdfRef = ref(storage, res[0].download_url);
+          const url = await getDownloadURL(pdfRef);
+          setPdfURLDL(url);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchPDF();
+  }, []);
 
   return (
     <div className="main-container">
@@ -464,6 +572,65 @@ const handleInputChangeMsg = (event) => {
                 )}
               </button>
               <p style={{ marginTop: 10, fontWeight: 'bolder' }}>למחיקת עלון בחר עלון מהרשימה</p>
+            </div>
+          </Col>
+        </Row>
+        <Row className="justify-content-end mb-4">
+          <Col xs="auto">
+            <hr className="mb-0.5" />
+          </Col>
+        </Row>
+
+          {/* DeadLines */}
+          <Row className="justify-content-end">
+          <Col xs="auto">
+            <Card style={{ backgroundColor: 'rgba(255, 255, 255, 0.5)' }}>
+              <CardHeader title="מועדים" />
+              <CardContent>
+                <Button onClick={handleToggleOptionsDL} style={{ width: '100%', marginBottom: '8px' }}>
+                  {showOptionsDL ? 'סגור' : 'פתח'}
+                </Button>
+                <Collapse in={showOptionsDL}>
+                  <List>
+                    {pdfListDL.map((pdf) => (
+                      <ListItem
+                        button
+                        key={pdf._id}
+                        onClick={async () => await deletePdfDL(pdf)}
+                        selected={selectedPdf && selectedPdf.id === pdf.id}
+                        style={{
+                          cursor: 'pointer',
+                          padding: '8px',
+                          backgroundColor: '#fff',
+                          borderRadius: '4px',
+                          marginBottom: '8px',
+                        }}
+                      >
+                        <ListItemText primary={pdf.name} />
+                        
+                        <HiTrash />
+                      </ListItem>
+                    ))}
+                  </List>
+                </Collapse>
+              </CardContent>
+            </Card>
+          </Col>
+          <Col xs="auto">
+            <h3 style={{ color: 'black', marginBottom: '1rem', marginLeft: 100 }}>להעלות מועד חדש</h3>
+            <hr className="mb-0.5" />
+            <div>
+              <input type="file" onChange={(event) => setPdfUploadDL(event.target.files[0])} className="form-control-file" />
+              <button onClick={uploadPdfDeadLines} variant="success" className="mt-4 btn-custom" disabled={isLoading}>
+                {isLoading ? (
+                  <Spinner animation="border" role="status" size="sm" style={{ marginRight: '0.5rem' }}>
+                    <span className="visually-hidden">טוען...</span>
+                  </Spinner>
+                ) : (
+                  'העלאת PDF'
+                )}
+              </button>
+              <p style={{ marginTop: 10, fontWeight: 'bolder' }}>למחיקת מועד בחר עלון מהרשימה</p>
             </div>
           </Col>
         </Row>

@@ -1,4 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+@font-face {
+    font-family: "StamSefaradCLM";
+    src: url("../fonts/StamSefaradCLM.ttf") format("truetype");
+    /* החלף את "/path/to/fonts/" בנתיב הנכון לתיקיית הפונטים בפרויקט שלך */
+    /* תוכל להוסיף גרסאות נוספות של הפונט בפורמטים שונים כמו woff ו-eot אם תרצה לתמוך בדפדפנים ישנים */
+}
+.my-element {
+    font-family: "StamSefaradCLM", sans-serif;
+    /* אם הפונט לא יעמוד לרשות הדפדפנים, הוא ישתמש בגופן sans-serif כתחליף */
+}
+
 
 :root {
     --font-weight-bold: 700;
@@ -13,13 +24,13 @@
 }
 
 nav {
-    min-width: 600px;
     display: flex;
     align-items: center;
     justify-content: space-around;
     margin: auto;
 }
 
+/* עיצוב לקישורים */
 a {
     position: relative;
     text-decoration: none;
@@ -29,30 +40,22 @@ a {
     font-size: 20px;
     letter-spacing: 0.5px;
     padding: 0 10px;
+    display: block;
 }
 
-a::before {
-    content: none;
-    /* בטל את התוכן של הקו העליון */
-}
-
-a:after {
+a::after {
     content: "";
     position: absolute;
-    background-color: #ff3c78;
-    height: 3px;
+    background-color: #8ddca4;
+    height: 2px;
+    /* הגדלתי את הקו ל־2 פיקסלים */
     width: 0;
     left: 50%;
     transform: translateX(-50%);
-    bottom: -10px;
+    bottom: -5px;
+    /* קצת הזזתי את הקו קצת למעלה */
     transition: 0.3s;
     font-weight: bolder;
-}
-
-a:hover {
-    color: #ffffff;
-    font-weight: bolder;
-    font-size: large;
 }
 
 a:hover::before {
@@ -61,7 +64,7 @@ a:hover::before {
 
 a:hover:after {
     width: 100%;
-    background-color: #ff3c78;
+    background-color: #8ddca4;
     font-weight: var(--font-weight-bold);
     font-weight: bolder;
 }
@@ -82,5 +85,95 @@ a:hover:after {
 }
 .social-icon-wrapper {
     position: relative;
+}
+/* הגדרות כלליות */
+
+/* רזולוציה נמוכה (פאלפון) *//* עיצוב עבור רזולוציה נמוכה (פאלפון) */
+
+@media (max-width: 768px) {
+
+    /* שנה גודל כתב האתר */
+    body {
+        font-size: 16px;
+    }
+         nav {
+             flex-direction: column;
+             align-items: center;
+             justify-content: center;
+             text-align: center;
+             
+         }
+                   .navbar-container {
+                       flex-direction: column;
+                       align-items: center;
+                       font-size: 100%;
+                       justify-content: center;}
+
+    /* שנה גודל הלוגו ברזולוציה נמוכה */
+    .logo-image {
+        max-width: 50px;
+    }
+
+    /* שנה את הרווחים בין הקישורים ברזולוציה נמוכה */
+    a {
+        font-size: 20;
+        margin-bottom: 10px;
+        /* יתאים גודל הכתב לרזולוציה נמוכה */
+    }
+
+    /* שינוי המרווח של התוכן הראשי ברזולוציה נמוכה */
+    .main-container {
+        padding-top: 70px;
+    }
+
+    /* עיצוב קישורים ברזולוציה נמוכה */
+    .nav-links {
+         margin-top: 20px; 
+        flex-direction: column;
+      
+    }
+
+    /* עיצוב כפתור המנהל ברזולוציה נמוכה */
+    .admin-button {
+        margin-top: 10px;
+    }
+
+    /* עיצוב השעון הדיגיטלי ברזולוציה נמוכה */
+    .digital-clock {
+        font-size: 1.2rem;
+    }
+
+    /* עיצוב תאריך עברי ברזולוציה נמוכה */
+   .my-element {
+    font-size: 16px;
+   }
+          .offcanvas-header {
+              justify-content: flex-end;
+          }
+    
+          /* התאמת הקישורים ב-Offcanvas לצד ימין */
+          .offcanvas-body {
+              display: flex;
+              flex-direction: column;
+              align-items: flex-end;
+          }
+                   .offcanvas-body a:not(.social-icon) {
+                       background-color: #8ddca4;
+                       padding: 10px 20px;
+                       border-radius: 5px;
+                       color: white;
+                       margin-bottom: 10px;
+                   }
+        
+                   /* הוספת רקע רוד לקישור הפעיל */
+                   .offcanvas-body a.active:not(.social-icon) {
+                       background-color: #160f11;
+                   }
+                   
+/* Add this CSS to increase the font size of the text */
+.large-text {
+    font-size: 107%;
+    /* You can adjust the font size as needed */
+}
 }
 

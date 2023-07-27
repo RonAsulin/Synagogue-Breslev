@@ -105,6 +105,7 @@ class FirebaseClient {
             return error;
         }
     }
+
     async AppendPaperEntry(data)
     {
         try {
@@ -178,6 +179,61 @@ async DeleteMessage(id) {
             const messageDocReference = doc(this.#db, `msgUpdate/${id}`);
             await deleteDoc(messageDocReference);
             return id;
+        } catch (error) {
+            return error;
+        }
+    }
+
+    //DeadLines
+      async DeadLinesUploadFile(file)
+    {
+        try {
+            const time_stamp = Date.now();
+            const name_no_mime = file.name.split('.');
+            const joined_name = name_no_mime.join('_')
+            const filesRef = ref(this.#storage, `deadlines/${joined_name}_${time_stamp}.pdf`);
+            const fileRef = await uploadBytes(filesRef,file, {contentType: `application/pdf`});
+            const url = await getDownloadURL(fileRef.ref);
+
+            return {download_url: url, path: `deadlines/${joined_name}_${time_stamp}.pdf`};
+
+        } catch (error) {
+            return error;
+        }
+    }
+     async AppendDeadLinesEntry(data)
+    {
+        try {
+            const collectionRef = collection(this.#db, `deadlines`);
+            const newEntry = await addDoc(collectionRef, data);
+            return {id: newEntry.id, ...data};
+        } catch (error) {
+            return error;
+        }
+    }
+          async GetDeadLines()
+    {
+        try {
+            const papersCollection = collection(this.#db, "deadlines");
+            const q = query(papersCollection, orderBy("date", "desc"), limit(5))
+            const allEntries = await getDocs(q);
+
+            return allEntries.docs.map((entry) => ({...entry.data(), _id: entry.id}));
+        } catch (error) {
+            
+            return error;
+        }
+    }
+     async DeleteDeadLines(deadlines)
+    {
+        try {
+
+            const paperReference = ref(this.#storage,deadlines.file.path);
+            await deleteObject(paperReference);
+
+            const paperDocReference = doc(this.#db, `deadlines/${deadlines._id}`)
+            await deleteDoc(paperDocReference);
+            return deadlines;
         } catch (error) {
             return error;
         }

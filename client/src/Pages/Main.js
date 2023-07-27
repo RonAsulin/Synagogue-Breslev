@@ -1,6 +1,6 @@
 import React, { useEffect,useRef,useState } from 'react';
 import { Nav, Card } from 'react-bootstrap';
-import forest from "../pics/forest.jpg";
+import forest from "../pics/forest.png";
 import logo from '../pics/picLogo.png';
 import FirebaseClient from '../api/FirebaseClient'
 import textImage from '../pics/textR.png';
@@ -29,12 +29,34 @@ const [latestMessage, setLatestMessage] = useState('');
 
     fetchLatestMessage();
   }, []);
+  const handleWindowResize = () => {
+    // Get the window's inner width
+    const windowWidth = window.innerWidth;
+    
 
+    if (windowWidth < 768) {
+
+    } else {
+
+    }
+  };
+
+  // Add event listener for window resize
+  useEffect(() => {
+    window.addEventListener("resize", handleWindowResize);
+    // Remove event listener on component unmount
+    return () => {
+      window.removeEventListener("resize", handleWindowResize);
+    };
+  }, []);
 
  return (
     <>
+    
       <div className="main-container">
+          <div className="background-container">
         <img src={forest} alt="forest" className="background-image" />
+      </div>
         <div className="content">
           <div className="logo tracking-in-expand-fwd-top ">
             <img src={logo} alt="breslev" className="logo-image" />
@@ -49,10 +71,13 @@ const [latestMessage, setLatestMessage] = useState('');
  <div className="text">
             <img src={textImage} alt="rabe" className="text-image" />
             <Marquee  
+                  speed={40}
+          gradientWidth={50}
+            
             >
               <Card className='card'>
-                <Card.Body className="marquee-content" style={{ fontSize: '20px', fontWeight: 'bold', color: 'white', textShadow: '0px 0px 1px black, 0px 0px 5px black, 0px 0px 5px black, 0px 0px 5px black' }}>
-                  {`|-${latestMessage}-|`}
+                <Card.Body className="marquee-content" style={{ fontFamily:'StamSefaradCLM', fontSize: '20px', fontWeight: 'bold', color: 'white', textShadow: '0px 0px 1px black, 0px 0px 5px black, 0px 0px 5px black, 0px 0px 5px black' }}>
+                  {`${latestMessage}`}
                 </Card.Body>
               </Card>
               </Marquee>
@@ -62,5 +87,8 @@ const [latestMessage, setLatestMessage] = useState('');
     </>
   );
 };
+
+
+
 
 export default Main;

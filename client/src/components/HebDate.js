@@ -15,7 +15,7 @@ const HebrewDateWithParasha = () => {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    padding: '12px',
+    padding: '20px',
     backgroundColor: 'rgba(255, 255, 255, 0.02)',
     boxShadow: 'rgba(255, 255, 255, 0.02)'
   };

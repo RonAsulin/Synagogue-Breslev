@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Container, Button, Table,} from 'react-bootstrap';
 import FirebaseClient from '../api/FirebaseClient';
 import { toast } from 'react-toastify';
-import forest from '../pics/forest.jpg';
-import HebDate from '../components/HebDate';
+import forest from '../pics/forest.png';
 import  '../css/Main.css';
 
 
@@ -12,14 +11,36 @@ function TimesPray(props) {
   const [isEditingRowId, setIsEditingRowId] = useState(null);
   const [newRowData, setNewRowData] = useState({ time: '', day: '' });
   const [tableData, setTableData] = useState([]);
+  const [isMobile, setIsMobile] = useState(false);
+ useEffect(() => {
+  const handleScroll = () => {
+    const backgroundContainer = document.querySelector('.background-container');
+    const isMobile = window.innerWidth < 768;
 
+    if (isMobile) {
+      // Calculate the scroll amount and adjust the background image position
+      const scrollPosition = window.scrollY;
+      backgroundContainer.style.transform = `translateY(-${scrollPosition}px)`;
+    }
+  };
+  
+
+  // Attach the scroll event listener
+  window.addEventListener('scroll', handleScroll);
+
+  // Clean up the listener when the component unmounts
+  return () => {
+    window.removeEventListener('scroll', handleScroll);
+  };
+}, []);
   const fetchData = async () => {
     const cl = FirebaseClient.getInstance();
 
     const res = await cl.GetPrayingTimes();
 
     if (res instanceof Error) toast.error(res.message);
-    else setTableData(res.map((entry,index) => ({...entry, id: index})).sort((x,y) => x.created_at < y.created_at));
+    else setTableData(res.map((entry,index) => ({...entry, id: index})).sort((x,y) => x.created_at > y.created_at));
+
   };
 
   useEffect(() => {
@@ -82,8 +103,11 @@ function TimesPray(props) {
 
   return (
     <div className="main-container">
-      <img src={forest} alt="forest" className="background-image" />
+           <div className="background-container">
+        <img src={forest} alt="forest" className="background-image" />
+      </div>
        <div className='content'>
+        
       <Container className="mt-4 text-right">
               <div
     style={{
@@ -91,6 +115,7 @@ function TimesPray(props) {
       flexDirection: 'column',
       alignItems: 'center',
       textAlign: 'center',
+      marginBottom: '1px',
     }}
   >
     <div className='tracking-in-expand-fwd-top'>
@@ -101,7 +126,6 @@ function TimesPray(props) {
         margin: 0,
         fontFamily: 'Arial, sans-serif',
         color: '#fff',
-
           textShadow: '4px 4px 8px rgba(0, 0, 0, 0.7), 0 0 3px rgba(0, 0, 0, 0.9), 0 0 3px rgba(0, 0, 0, 0.9), 0 0 3px rgba(0, 0, 0, 0.9), 0 0 3px rgba(0, 0, 0, 0.9)',
         textTransform: 'uppercase',
         letterSpacing: '2px',
@@ -121,6 +145,7 @@ function TimesPray(props) {
             display: 'flex',
             justifyContent: 'center',
             position: 'relative',
+            
           }}
         >
         <Table striped bordered style={{ width: '100%' }}>
@@ -206,8 +231,8 @@ function TimesPray(props) {
             )}
           </tbody>
         </Table>
+        </div>
       </div>
-    </div>
     </div>
   );
 }
