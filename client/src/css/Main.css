@@ -9,6 +9,7 @@ body {
     overflow-x: hidden;
     /* Hide horizontal scrollbar if present */
 }
+
 .background-container {
     text-align: center;
 }
@@ -19,6 +20,7 @@ body {
     /* Set the height to cover the entire viewport */
     object-fit: cover;
 }
+
 .page-title {
     font-size: 5rem;
     font-weight: bold;
@@ -31,6 +33,7 @@ body {
     padding: 10px;
     margin: 0;
 }
+
 .bold {
     font-weight: bold;
 }
@@ -49,9 +52,10 @@ body {
 }
 
 .logo-image {
-    max-width:1000px;
+    max-width: 1000px;
 
 }
+
 .page-button {
     padding: 15px 25px;
     font-size: 18px;
@@ -81,6 +85,7 @@ body {
 .button-group .page-button:not(:last-child) {
     margin-right: 10px;
 }
+
 .text-image {
     display: block;
     margin: 20px auto;
@@ -113,6 +118,7 @@ body {
         transform: translateX(-29%);
     }
 }
+
 /* TimesPray */
 .card {
     display: flex;
@@ -125,12 +131,15 @@ body {
     margin: 0;
     background-color: rgba(255, 255, 255, 0.02);
     text-align: center;
+
 }
 
 .card .message {
     flex: 1;
     margin: 5px;
+
 }
+
 .custom-list-group {
     font-size: 18px;
 }
@@ -138,12 +147,15 @@ body {
 .custom-list-item {
     padding: 15px;
 }
+
 .custom-card {
     border: none;
 }
-.card{
-    border:none;
+
+.card {
+    border: none;
 }
+
 /* PAGE MASSAGE */
 .notice-board {
     display: flex;
@@ -155,6 +167,7 @@ body {
 .notice-board>.card {
     width: 400px;
     margin-bottom: 20px;
+
 }
 
 
@@ -173,55 +186,59 @@ body {
     display: flex;
     justify-content: space-between;
 }
- .tracking-in-expand-fwd-top {
-     -webkit-animation: tracking-in-expand-fwd-top 0.8s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
-     animation: tracking-in-expand-fwd-top 0.8s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
- }
 
- @-webkit-keyframes tracking-in-expand-fwd-top {
-     0% {
-         letter-spacing: -0.5em;
-         -webkit-transform: translateZ(-700px) translateY(-500px);
-         transform: translateZ(-700px) translateY(-500px);
-         opacity: 0;
-     }
+.tracking-in-expand-fwd-top {
+    -webkit-animation: tracking-in-expand-fwd-top 0.8s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+    animation: tracking-in-expand-fwd-top 0.8s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+}
 
-     40% {
-         opacity: 0.6;
-     }
+@-webkit-keyframes tracking-in-expand-fwd-top {
+    0% {
+        letter-spacing: -0.5em;
+        -webkit-transform: translateZ(-700px) translateY(-500px);
+        transform: translateZ(-700px) translateY(-500px);
+        opacity: 0;
+    }
 
-     100% {
-         -webkit-transform: translateZ(0) translateY(0);
-         transform: translateZ(0) translateY(0);
-         opacity: 1;
-     }
- }
+    40% {
+        opacity: 0.6;
+    }
 
- @keyframes tracking-in-expand-fwd-top {
-     0% {
-         letter-spacing: -0.5em;
-         -webkit-transform: translateZ(-700px) translateY(-500px);
-         transform: translateZ(-700px) translateY(-500px);
-         opacity: 0;
-     }
+    100% {
+        -webkit-transform: translateZ(0) translateY(0);
+        transform: translateZ(0) translateY(0);
+        opacity: 1;
+    }
+}
 
-     40% {
-         opacity: 0.6;
-     }
+@keyframes tracking-in-expand-fwd-top {
+    0% {
+        letter-spacing: -0.5em;
+        -webkit-transform: translateZ(-700px) translateY(-500px);
+        transform: translateZ(-700px) translateY(-500px);
+        opacity: 0;
+    }
 
-     100% {
-         -webkit-transform: translateZ(0) translateY(0);
-         transform: translateZ(0) translateY(0);
-         opacity: 1;
-     }
- }
+    40% {
+        opacity: 0.6;
+    }
+
+    100% {
+        -webkit-transform: translateZ(0) translateY(0);
+        transform: translateZ(0) translateY(0);
+        opacity: 1;
+    }
+}
+
 @font-face {
     font-family: "StamSefaradCLM";
     src: url("../fonts/StamSefaradCLM.ttf") format("truetype");
 }
+
 .my-element {
     font-family: "StamSefaradCLM", sans-serif;
 }
+
 @media (max-width: 768px) {
 
 
@@ -245,127 +262,182 @@ body {
 
     .text-image {
         display: block;
-         margin: 20px auto; 
+        margin: 20px auto;
         width: 100%;
         height: auto;
     }
-  .page-title {
-      font-size: 3rem;
-      font-weight: bold;
-      font-family: Arial, sans-serif;
-      color: #fff;
-      text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.7), 0 0 3px rgba(0, 0, 0, 0.9), 0 0 3px rgba(0, 0, 0, 0.9),
-          0 0 3px rgba(0, 0, 0, 0.9), 0 0 3px rgba(0, 0, 0, 0.9);
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      z-index: 1;
-  }
-                .background-container {
-                    /* Center the image on the small screen */
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    /* Remove the fixed positioning */
-                    position: static;
-                }
-        
-                .background-image {
-                    /* Set the height to cover the entire viewport */
-                    height: 100vh;
-                    /* Allow the image to resize without cropping */
-                    object-fit: cover;
-                    /* Prevent the image from repeating */
-                    background-repeat: no-repeat;
-                    /* Center the image both horizontally and vertically */
-                    background-position: center center;
-                }
+
+    .page-title {
+        font-size: 3rem;
+        font-weight: bold;
+        font-family: Arial, sans-serif;
+        color: #fff;
+        text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.7), 0 0 3px rgba(0, 0, 0, 0.9), 0 0 3px rgba(0, 0, 0, 0.9),
+            0 0 3px rgba(0, 0, 0, 0.9), 0 0 3px rgba(0, 0, 0, 0.9);
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        z-index: 1;
+    }
+
+    .background-container {
+        /* Center the image on the small screen */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* Remove the fixed positioning */
+        position: static;
+    }
+
+    .background-image {
+        /* Set the height to cover the entire viewport */
+        height: 100vh;
+        /* Allow the image to resize without cropping */
+        object-fit: cover;
+        /* Prevent the image from repeating */
+        background-repeat: no-repeat;
+        /* Center the image both horizontally and vertically */
+        background-position: center center;
+    }
 
 
 
 
 
-/* עיצוב תצוגת המסך בפאלפון ומסכים קטנים */
-.content-container {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    height: calc(100vh - 100px);
+    /* עיצוב תצוגת המסך בפאלפון ומסכים קטנים */
+    .content-container {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        height: calc(100vh - 100px);
+    }
+
+    .card {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 90%;
+        /* אנחנו משתמשים ב-% כדי להתאים את הרוחב לגודל המסך */
+        max-width: 400px;
+        /* הרוחב המרבי של הכרטיס יהיה 400 פיקסלים */
+        border-radius: 10px;
+        padding: 10px;
+        margin: 0 auto;
+        /* הכרטיס יישר במרכז העמוד */
+        background-color: rgba(255, 255, 255, 0.02);
+        text-align: center;
+
+    }
+
+    .custom-list-group {
+        font-size: 18px;
+    }
+
+    .custom-list-item {
+        padding: 15px;
+    }
+
+    .custom-card {
+        border: none;
+
+    }
+
+    /* כדי לשמור על אותו גודל של הכרטיסים ברוחב */
+    .card .message {
+        flex: 1;
+        margin: 5px;
+
+    }
+
+    /* הוספת עיצוב לעמוד ההודעות */
+    .notice-board {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 20px;
+
+    }
+
+    /* אנחנו רוצים שהכרטיס יתאים לרוחב המסך */
+    .notice-board>.card {
+        width: 90%;
+        max-width: 400px;
+        margin-bottom: 20px;
+    }
+
+    /* התאמת העמוד למסכים קטנים */
+    .add-message {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .input-row {
+        display: flex;
+        flex-direction: column;
+        /* עבור מסכים קטנים נשנה לכיוון עמודי */
+        align-items: center;
+        /* הטקסט יישאר מרכזי על גבי הכרטיס */
+        margin-bottom: 10px;
+    }
+
+    .button-row {
+        display: flex;
+        flex-direction: column;
+        /* עבור מסכים קטנים נשנה לכיוון עמודי */
+        align-items: center;
+        /* הכפתורים יישארו מרכזיים על גבי הכרטיס */
+    }
+
+
 }
-.card {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 90%;
-    /* אנחנו משתמשים ב-% כדי להתאים את הרוחב לגודל המסך */
-    max-width: 400px;
-    /* הרוחב המרבי של הכרטיס יהיה 400 פיקסלים */
-    border-radius: 10px;
+
+/* Table
+/* Updated Table Styles */
+.table-content {
+    background: linear-gradient(90deg, rgba(221, 255, 160, 0.8) 13%, rgba(240, 242, 174, 0.8) 49%, rgba(201, 255, 193, 0.8) 88%);
+}
+
+.table-content th,
+.table-content td {
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #000;
+    /* Text color for header cells */
+}
+
+.table-content th {
+    font-weight: bold;
+}
+
+.table-content tbody tr:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+.table-content tbody tr:nth-child(odd) {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Add some padding and border radius to cells */
+.table-content td {
     padding: 10px;
-    margin: 0 auto;
-    /* הכרטיס יישר במרכז העמוד */
-    background-color: rgba(255, 255, 255, 0.02);
-    text-align: center;
+    border-radius: 5px;
 }
 
-.custom-list-group {
-    font-size: 18px;
-}
-
-.custom-list-item {
-    padding: 15px;
-}
-
-.custom-card {
+/* Style for the edit and delete buttons */
+.table-content .edit-btn,
+.table-content .delete-btn {
+    background-color: #3498db;
+    color: #fff;
     border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
 }
 
-/* כדי לשמור על אותו גודל של הכרטיסים ברוחב */
-.card .message {
-    flex: 1;
-    margin: 5px;
-}
-
-/* הוספת עיצוב לעמוד ההודעות */
-.notice-board {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 20px;
-}
-
-/* אנחנו רוצים שהכרטיס יתאים לרוחב המסך */
-.notice-board>.card {
-    width: 90%;
-    max-width: 400px;
-    margin-bottom: 20px;
-}
-
-/* התאמת העמוד למסכים קטנים */
-.add-message {
-    display: flex;
-    flex-direction: column;
-}
-
-.input-row {
-    display: flex;
-    flex-direction: column;
-    /* עבור מסכים קטנים נשנה לכיוון עמודי */
-    align-items: center;
-    /* הטקסט יישאר מרכזי על גבי הכרטיס */
-    margin-bottom: 10px;
-}
-
-.button-row {
-    display: flex;
-    flex-direction: column;
-    /* עבור מסכים קטנים נשנה לכיוון עמודי */
-    align-items: center;
-    /* הכפתורים יישארו מרכזיים על גבי הכרטיס */
-}
-
-
+/* Hover effect for buttons */
+.table-content .edit-btn:hover,
+.table-content .delete-btn:hover {
+    background-color: #2980b9;
 }

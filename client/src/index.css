@@ -32,3 +32,12 @@ html {
     .myfont {
       font-family: 'MyFont';
     }
+
+@font-face {
+  font-family: 'MyFontTitle';
+  src: local('fonts'), url(./fonts/shmulikclm-webfont.ttf) format('ttf');
+}
+
+.fontTitle {
+  font-family: 'MyFontTitle';
+}

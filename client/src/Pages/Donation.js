@@ -1,16 +1,29 @@
-import React from 'react';
-import emailjs from 'emailjs-com';
-import { Container, Form, FormControl, FormGroup, Col, Row, Button } from 'react-bootstrap';
-import forest from '../pics/forest.png';
-import '../css/btnStile.css';
-import '../css/Main.css';
+import React from "react";
+import emailjs from "emailjs-com";
+import {
+  Container,
+  Form,
+  FormControl,
+  FormGroup,
+  Col,
+  Row,
+  Button,
+} from "react-bootstrap";
+import forest from "../pics/forest.png";
+import "../css/btnStile.css";
+import "../css/Main.css";
 
 function Donation() {
   function sendEmail(e) {
     e.preventDefault();
 
     emailjs
-      .sendForm('service_e12adbp', 'template_2wy7hfs', e.target, 'WERUl7B0yILtOGqbG')
+      .sendForm(
+        "service_e12adbp",
+        "template_2wy7hfs",
+        e.target,
+        "WERUl7B0yILtOGqbG"
+      )
       .then((res) => {
         console.log(res);
       })
@@ -28,26 +41,35 @@ function Donation() {
         <Container className="mt-4 text-right">
           <div
             style={{
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              textAlign: 'center',
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              textAlign: "center",
             }}
           >
             <div className="tracking-in-expand-fwd-top">
-              <h1 className="page-title">תרומה</h1>
+              <h1
+                style={{ fontFamily: "shmulikclm-webfont" }}
+                className="page-title"
+              >
+                תרומה
+              </h1>
             </div>
             <section className="relative justify-center items-center flex text-xl">
               <div className="relative items-center justify-center flex py-10 font-extrabold ">
                 <h2
                   className="text-4xl text-center myfont  font-extrabold "
                   style={{
-                    color: 'black',
+                    color: "black",
                     fontWeight: 600,
-                     textShadow: '0 0 2px #fff, 0 0 2px #fff, 0 0 2px #fff, 0 0 2px #fff'
+                    textShadow:
+                      "0 0 2px #fff, 0 0 2px #fff, 0 0 2px #fff, 0 0 2px #fff",
                   }}
                 >
-                  עַל־יְדֵי צְדָקָה שֶׁנּוֹתֵן לְהַתַּלְמִיד חָכָם, עַל־יְדֵי זֶה נִצּוֹל מִדְּבָרִים בְּטֵלִים וּלְשׁוֹן הָרָע וְגַאֲוָה וְתוֹלְדוֹתֵיהֶן. גַּם עַל־יְדֵי צְדָקָה נִצּוֹלִין מֵעֲנִיּוּת וְזֹאת זוֹכִין לַעֲשִׁירוּת: (לק"א סי' ד' אות ח')
+                  עַל־יְדֵי צְדָקָה שֶׁנּוֹתֵן לְהַתַּלְמִיד חָכָם, עַל־יְדֵי
+                  זֶה נִצּוֹל מִדְּבָרִים בְּטֵלִים וּלְשׁוֹן הָרָע וְגַאֲוָה
+                  וְתוֹלְדוֹתֵיהֶן. גַּם עַל־יְדֵי צְדָקָה נִצּוֹלִין
+                  מֵעֲנִיּוּת וְזֹאת זוֹכִין לַעֲשִׁירוּת: (לק"א סי' ד' אות ח')
                 </h2>
                 <hr className="mb-1" />
               </div>
@@ -61,7 +83,7 @@ function Donation() {
                   <FormGroup className="mb-2">
                     <FormControl
                       type="text"
-                      style={{ textAlign: 'right' }}
+                      style={{ textAlign: "right" }}
                       className="form-control block w-full px-3 py-1.5 text-base font-bold text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none text-right"
                       placeholder="שם מלא"
                       name="name"
@@ -71,7 +93,7 @@ function Donation() {
                   <FormGroup className="mb-2">
                     <FormControl
                       type="email"
-                      style={{ textAlign: 'right' }}
+                      style={{ textAlign: "right" }}
                       className="form-control block w-full px-3 py-1.5 text-base font-bold text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none text-right"
                       placeholder="כתובת-דואר"
                       name="email"
@@ -80,7 +102,7 @@ function Donation() {
                   <FormGroup className="mb-2">
                     <FormControl
                       type="phone"
-                      style={{ textAlign: 'right' }}
+                      style={{ textAlign: "right" }}
                       className="form-control block w-full px-3 py-1.5 text-base font-bold text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none text-right"
                       placeholder="פאלפון"
                       name="phone"
@@ -90,7 +112,7 @@ function Donation() {
                   <FormGroup className="mb-2">
                     <FormControl
                       type="text"
-                      style={{ textAlign: 'right' }}
+                      style={{ textAlign: "right" }}
                       className="form-control block w-full px-3 py-1.5 text-base font-bold text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none text-right"
                       placeholder="נושא"
                       name="subject"
@@ -100,7 +122,7 @@ function Donation() {
                   <FormGroup className="mb-2">
                     <FormControl
                       as="textarea"
-                      style={{ textAlign: 'right' }}
+                      style={{ textAlign: "right" }}
                       className="form-control block w-full px-3 py-1.5 text-base font-bold text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none text-right"
                       rows="3"
                       placeholder="הודעה"
@@ -117,55 +139,83 @@ function Donation() {
             <Col className="text-right">
               <div
                 className="grow-0 shrink-0 basis-auto mb-6 md:mb-0 w-full md:w-6/12 px-3 lg:px-6"
-                style={{ textAlign: 'right', fontSize: '18px', fontWeight: 'bolder' }}
+                style={{
+                  textAlign: "right",
+                  fontSize: "18px",
+                  fontWeight: "bolder",
+                }}
               >
                 <h2
                   className="text-4xl font-extrabold mb-6 "
-                  style={{ textShadow: '0 0 2px #fff, 0 0 2px #fff, 0 0 2px #fff, 0 0 2px #fff' }}
+                  style={{
+                    textShadow:
+                      "0 0 2px #fff, 0 0 2px #fff, 0 0 2px #fff, 0 0 2px #fff",
+                  }}
                 >
                   תרומות לבית המדרש
                 </h2>
                 <hr className="mb-1" />
                 <p
                   className="text-black-500 text-2xl font-extrabold mb-6"
-                  style={{ textShadow: '0 0 2px #fff, 0 0 2px #fff, 0 0 2px #fff, 0 0 2px #fff' }}
+                  style={{
+                    textShadow:
+                      "0 0 2px #fff, 0 0 2px #fff, 0 0 2px #fff, 0 0 2px #fff",
+                  }}
                 >
                   שלום
                 </p>
                 <p
                   className="text-white text-2xl font-extrabold mb-2"
-                  style={{ textShadow: '0 0 2px #000, 0 0 2px #000, 0 0 2px #000, 0 0 2px #000' }}
+                  style={{
+                    textShadow:
+                      "0 0 2px #000, 0 0 2px #000, 0 0 2px #000, 0 0 2px #000",
+                  }}
                 >
                   ניתן לתרום גם באמצעות ביט: 054-2187218
                 </p>
                 <p
                   className="text-white text-2xl font-extrabold mb-2"
-                  style={{ textShadow: '0 0 2px #000, 0 0 2px #000, 0 0 2px #000, 0 0 2px #000' }}
+                  style={{
+                    textShadow:
+                      "0 0 2px #000, 0 0 2px #000, 0 0 2px #000, 0 0 2px #000",
+                  }}
                 >
                   לפרטים נוספים ניתן ליצור קשר עם שחר: 054-2187218
                 </p>
                 <p
                   className="text-white text-2xl font-extrabold mb-2"
-                  style={{ textShadow: '0 0 2px #000, 0 0 2px #000, 0 0 2px #000, 0 0 2px #000' }}
+                  style={{
+                    textShadow:
+                      "0 0 2px #000, 0 0 2px #000, 0 0 2px #000, 0 0 2px #000",
+                  }}
                 >
                   : ניתן לשלוח דוא"ל לכתובת
                 </p>
                 <p
                   className="text-white text-2xl font-extrabold mb-2"
-                  style={{ textShadow: '0 0 2px #000, 0 0 2px #000, 0 0 2px #000, 0 0 2px #000' }}
+                  style={{
+                    textShadow:
+                      "0 0 2px #000, 0 0 2px #000, 0 0 2px #000, 0 0 2px #000",
+                  }}
                 >
                   breslevDimona@gmail.com
                 </p>
                 <p
                   className="text-white text-2xl font-extrabold mb-2"
-                  style={{ textShadow: '0 0 2px #000, 0 0 2px #000, 0 0 2px #000, 0 0 2px #000' }}
+                  style={{
+                    textShadow:
+                      "0 0 2px #000, 0 0 2px #000, 0 0 2px #000, 0 0 2px #000",
+                  }}
                 >
                   נעדכן בפרטים נוספים
                 </p>
               </div>
             </Col>
           </Row>
-          <div className="flex justify-end" style={{ marginTop: '-50px' }}></div>
+          <div
+            className="flex justify-end"
+            style={{ marginTop: "-50px" }}
+          ></div>
         </Container>
       </div>
     </div>

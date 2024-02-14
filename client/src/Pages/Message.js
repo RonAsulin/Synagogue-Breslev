@@ -8,7 +8,7 @@ import '../css/message.css';
 
 const Message = () => {
   const [messages, setMessages] = useState([]);
-  const [isMobile, setIsMobile] = useState(false);
+  const [, setIsMobile] = useState(false);
 
     useEffect(() => {
     fetchMessages();
@@ -45,24 +45,38 @@ const Message = () => {
     }
   };
 
-  const handleToggleMessage = (id, e) => {
-    // Check if the click occurred on the "X" icon (close-icon)
-    if (!e.target.classList.contains('close-icon')) {
-      setMessages((prevMessages) =>
-        prevMessages.map((message) =>
-          message.id === id ? { ...message, isOpen: !message.isOpen } : message
-        )
-      );
-    }
-  };
-
-  const handleOpenMessage = (id) => {
+const handleToggleMessage = (id, e) => {
+  // Check if the click occurred on the title and not the "X" icon (close-icon)
+  if (e.target.classList.contains('title')) {
     setMessages((prevMessages) =>
       prevMessages.map((message) =>
         message.id === id ? { ...message, isOpen: !message.isOpen } : message
       )
     );
-  };
+  }
+};
+
+const handleOpenMessage = (id, e) => {
+  // Check if the click occurred on the title and not the message body
+  if (e.target.classList.contains('title')) {
+    setMessages((prevMessages) =>
+      prevMessages.map((message) =>
+        message.id === id ? { ...message, isOpen: !message.isOpen } : message
+      )
+    );
+    
+  }
+};
+const handleCloseMessage = (id, e) => {
+  // Stop the event from propagating to the handleOpenMessage function
+  e.stopPropagation();
+
+  setMessages((prevMessages) =>
+    prevMessages.map((message) =>
+      message.id === id ? { ...message, isOpen: false } : message
+    )
+  );
+};
     const isMobileDevice = window.innerWidth <= 768; // Check if the device is mobile
 
 
@@ -72,21 +86,28 @@ const Message = () => {
         {/* Use a regular <img> tag for the background image */}
         <img src={forest} alt="forest" className="background-image" />
       </div>
-      <h1 className="page-title logo tracking-in-expand-fwd-top">הודעות בית-מדרשינו</h1>
+      <h1 style={{fontFamily:'shmulikclm-webfont'}} className="page-title logo tracking-in-expand-fwd-top">הודעות בית-מדרשינו</h1>
       <Container className="notice-board">
         {messages.map((message, index) => (
           <div key={message.id}>
             {index !== 0 && <hr className="divider" />}
             <Card
               className={`message-card ${message.isOpen ? 'open' : ''}`}
-              onClick={() => handleOpenMessage(message.id)}
             >
-              <Card.Header className="title">
+             <Card.Header className={`title ${message.isOpen ? 'open' : ''}`}
+             onClick={(e) => handleToggleMessage(message.id, e)}>
                 <span>{message.title}</span>
                 <div className="title-underline"></div>
+                {message.isOpen && (
+                  <span className="close-icon" onClick={(e) => handleCloseMessage(message.id, e)}>
+                    &#10005;
+                  </span>
+                )}
               </Card.Header>
               {message.isOpen && (
-                <Card.Body className="body">{message.message}</Card.Body>
+                  <Card.Body className="body" onClick={(e) => handleToggleMessage(message.id, e)}>
+                    {message.message}
+               </Card.Body>
               )}
             </Card>
           </div>

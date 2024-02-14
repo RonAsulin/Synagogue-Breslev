@@ -26,6 +26,7 @@ body {
     z-index: -1;
     overflow: hidden;
 }
+
 .sidebar {
     position: fixed;
     top: 10;
@@ -35,16 +36,17 @@ body {
     padding: 16px;
 
 }
-   .pdf-loading-message {
-       color: #fff;
-       font-size: 1.7rem;
-       font-weight: bold;
-       text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-   }
+
+.pdf-loading-message {
+    color: #fff;
+    font-size: 1.7rem;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
 
 /* עיצוב תצוגת המסך במסכים קטנים */
 @media (max-width: 768px) {
-body {
+    body {
         height: 100%;
         margin: 0;
         padding: 0;
@@ -94,7 +96,7 @@ body {
         z-index: 1;
     }
 
-   
+
 
     .pdf-container {
         display: flex;
@@ -115,6 +117,5 @@ body {
         font-weight: bold;
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
     }
-    
-}
 
+}

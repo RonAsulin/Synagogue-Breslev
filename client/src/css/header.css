@@ -1,10 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
 @font-face {
     font-family: "StamSefaradCLM";
     src: url("../fonts/StamSefaradCLM.ttf") format("truetype");
     /* החלף את "/path/to/fonts/" בנתיב הנכון לתיקיית הפונטים בפרויקט שלך */
     /* תוכל להוסיף גרסאות נוספות של הפונט בפורמטים שונים כמו woff ו-eot אם תרצה לתמוך בדפדפנים ישנים */
 }
+
 .my-element {
     font-family: "StamSefaradCLM", sans-serif;
     /* אם הפונט לא יעמוד לרשות הדפדפנים, הוא ישתמש בגופן sans-serif כתחליף */
@@ -68,6 +70,7 @@ a:hover:after {
     font-weight: var(--font-weight-bold);
     font-weight: bolder;
 }
+
 .admin-button-active,
 .admin-button-inactive {
     background-color: transparent;
@@ -83,12 +86,15 @@ a:hover:after {
     background-color: transparent;
     border: none;
 }
+
 .social-icon-wrapper {
     position: relative;
 }
+
 /* הגדרות כלליות */
 
-/* רזולוציה נמוכה (פאלפון) *//* עיצוב עבור רזולוציה נמוכה (פאלפון) */
+/* רזולוציה נמוכה (פאלפון) */
+/* עיצוב עבור רזולוציה נמוכה (פאלפון) */
 
 @media (max-width: 768px) {
 
@@ -96,18 +102,21 @@ a:hover:after {
     body {
         font-size: 16px;
     }
-         nav {
-             flex-direction: column;
-             align-items: center;
-             justify-content: center;
-             text-align: center;
-             
-         }
-                   .navbar-container {
-                       flex-direction: column;
-                       align-items: center;
-                       font-size: 100%;
-                       justify-content: center;}
+
+    nav {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+
+    }
+
+    .navbar-container {
+        flex-direction: column;
+        align-items: center;
+        font-size: 100%;
+        justify-content: center;
+    }
 
     /* שנה גודל הלוגו ברזולוציה נמוכה */
     .logo-image {
@@ -128,9 +137,9 @@ a:hover:after {
 
     /* עיצוב קישורים ברזולוציה נמוכה */
     .nav-links {
-         margin-top: 20px; 
+        margin-top: 20px;
         flex-direction: column;
-      
+
     }
 
     /* עיצוב כפתור המנהל ברזולוציה נמוכה */
@@ -144,36 +153,37 @@ a:hover:after {
     }
 
     /* עיצוב תאריך עברי ברזולוציה נמוכה */
-   .my-element {
-    font-size: 16px;
-   }
-          .offcanvas-header {
-              justify-content: flex-end;
-          }
-    
-          /* התאמת הקישורים ב-Offcanvas לצד ימין */
-          .offcanvas-body {
-              display: flex;
-              flex-direction: column;
-              align-items: flex-end;
-          }
-                   .offcanvas-body a:not(.social-icon) {
-                       background-color: #8ddca4;
-                       padding: 10px 20px;
-                       border-radius: 5px;
-                       color: white;
-                       margin-bottom: 10px;
-                   }
-        
-                   /* הוספת רקע רוד לקישור הפעיל */
-                   .offcanvas-body a.active:not(.social-icon) {
-                       background-color: #160f11;
-                   }
-                   
-/* Add this CSS to increase the font size of the text */
-.large-text {
-    font-size: 107%;
-    /* You can adjust the font size as needed */
-}
-}
+    .my-element {
+        font-size: 16px;
+    }
 
+    .offcanvas-header {
+        justify-content: flex-end;
+    }
+
+    /* התאמת הקישורים ב-Offcanvas לצד ימין */
+    .offcanvas-body {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+
+    .offcanvas-body a:not(.social-icon) {
+        background-color: #8ddca4;
+        padding: 10px 20px;
+        border-radius: 5px;
+        color: white;
+        margin-bottom: 10px;
+    }
+
+    /* הוספת רקע רוד לקישור הפעיל */
+    .offcanvas-body a.active:not(.social-icon) {
+        background-color: #160f11;
+    }
+
+    /* Add this CSS to increase the font size of the text */
+    .large-text {
+        font-size: 107%;
+        /* You can adjust the font size as needed */
+    }
+}

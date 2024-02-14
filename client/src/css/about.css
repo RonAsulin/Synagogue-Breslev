@@ -29,6 +29,54 @@ body {
 
 }
 
+.cards-container {
+    display: flex;
+    flex-direction: row-reverse;
+    /* Align items at the center vertically */
+    align-items: center;
+    justify-content: space-between;
+    /* Add space between the cards */
+    margin-bottom: 20px;
+}
+
+.custom-card {
+    background: rgb(236, 249, 211);
+    background: linear-gradient(90deg, rgba(236, 249, 211, 1) 9%, rgba(254, 255, 252, 1) 55%, rgba(234, 251, 191, 1) 100%);
+    box-shadow: inset 0 0 10px 10px rgba(251, 245, 196, 0.7);
+    margin: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 400px;
+}
+
+.custom-card img {
+    width: 100%;
+    height: auto;
+    max-height: 600px;
+}
+
+.custom-card-text {
+    background-color: white;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+    margin: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 400px;
+    /* הוסף זאת */
+}
+
+.custom-text-card {
+    background-color: white;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+    margin: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
 
 @media (max-width: 768px) {
     .page-title {
@@ -55,4 +103,57 @@ body {
         background-position: center center;
     }
 
+}
+
+
+
+.carousel-container {
+    height: 600px;
+    width: "100%" !important;
+    /* קביעת גובה קבוע לקרוסלה */
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.4);
+}
+
+.carousel-image {
+    width: 100%;
+    height: 100%;
+    /* 100% כך שהתמונה תכסה את כל הקרוסלה */
+    object-fit: cover;
+    border-radius: 10px;
+    /* Optional: Add border-radius for a rounded appearance */
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    filter: invert(1);
+    /* שינוי צבע החץ ללבן (הפוך את הצבעים) */
+}
+
+.special-card {
+    margin: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 800px;
+    background: linear-gradient(90deg, rgba(221, 255, 160, 1) 13%, rgba(240, 242, 174, 1) 49%, rgba(201, 255, 193, 1) 88%);
+    box-shadow: inset 0 0 10px 10px rgba(14, 14, 12, 0.7);
+}
+
+.zoomed-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.zoomed-image {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
 }
